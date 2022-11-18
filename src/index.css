@@ -1,13 +1,45 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+background-color: #AEBDCA;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.select{
+  margin-top: 1em;
+  
 }
+
+
+
+.btn-aqua{
+  background-color: #AEBDCA;
+}
+
+.btn-aqua:hover{
+  background-color: #6c879e;
+}
+
+.line{
+  background-color: black;
+}
+
+.cattle-title{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #4b6881;
+}
+
+input[type=text], input[type=select]{
+   border: 1px solid #AEBDCA;
+}
+
+.form-control:focus {
+        border: 0px;
+        border-color:  #AEBDCA;
+        box-shadow: 0 0 0 0.2rem #AEBDCA;
+    } 
+
+
+
+
+
+
+
