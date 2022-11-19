@@ -44,6 +44,6 @@ export const year = [
 ];
 
 export const gender = [
-  { value: 1, label: "Female" },
-  { value: 2, label: "Male" },
+  { value: 0, label: "Female" },
+  { value: 1, label: "Male" },
 ];

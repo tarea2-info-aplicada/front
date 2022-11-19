@@ -63,17 +63,6 @@ const customStyle = {
                 </div>
 
                 <div className="select">
-                  <label>Peso</label>
-                  <Select
-                    name="weight"
-                    styles={customStyle}
-                    placeholder="Seleccione el peso..."
-                    options={weight}
-                    onChange={(event) => handleChangeSelect(event, "weight")}
-                  />
-                </div>
-
-                <div className="select">
                   <label>Genero</label>
                   <Select
                     name="gender"
