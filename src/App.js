@@ -1,37 +1,44 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import {gender, month, weight, year} from "./OptionSelect"
+import { gender, month, year } from "./OptionSelect";
+import { getResult } from "./services";
+import Spinner from "react-bootstrap/Spinner";
 
 function App() {
-
-
   const [data, setData] = useState([]);
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const handleChangeSelect = (event, name) => { 
+  const handleChangeSelect = (event, name) => {
     const value = event.value;
 
     console.log("name: ", name);
     console.log("value: ", value);
 
     setData({ ...data, [name]: value });
-  }
+  };
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log(JSON.stringify(data))
-  }
+    setLoading(false);
+    console.log(JSON.stringify(data));
 
-const customStyle = {
-  control: (provided) => ({
-    ...provided,
+    getResult(data).then((data) => {
+      setResult(data);
+      setLoading(true);
+    });
+  };
 
-    border: "0px",
-    borderColor: "#AEBDCA",
-    boxShadow: "0 0 0 0.1rem  #AEBDCA",
-  }),
-};
-  
- 
+  const customStyle = {
+    control: (provided) => ({
+      ...provided,
+
+      border: "0px",
+      borderColor: "#AEBDCA",
+      boxShadow: "0 0 0 0.1rem  #AEBDCA",
+    }),
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -74,22 +81,32 @@ const customStyle = {
                 </div>
 
                 <button className="btn btn-aqua mt-3">
-                  Buscar
-                  <i className="fa-solid fa-magnifying-glass"></i>
+                  <i className="fa-solid fa-magnifying-glass"></i> Buscar
+                </button>
+
+                <button
+                  onClick={() => window.location.reload()}
+                  className="btn btn-aqua mt-3 ml-2"
+                >
+                  <i class="fa-solid fa-xmark"></i> Cancelar
                 </button>
               </form>
               <hr></hr>
-              <p>{JSON.stringify(data)}</p>
-              <hr></hr>
-
               <div className="mt-2">
                 <label>Resultado de la aproximación</label>
+                <Spinner
+                  hidden={loading}
+                  className="ml-2"
+                  animation="grow"
+                  size="sm"
+                />
                 <input
                   disabled
                   style={{ backgroundColor: "white" }}
                   styles={customStyle}
                   className="form-control "
                   type="text"
+                  value={result || ""}
                   placeholder="Resultado"
                 ></input>
               </div>
