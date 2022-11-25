@@ -16,6 +16,6 @@ export async function getResult(data) {
       return data;
     })
     .catch(function (error) {
-      console.error(error);
+       return error;
     });
 }

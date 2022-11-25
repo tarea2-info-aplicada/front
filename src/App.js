@@ -11,10 +11,6 @@ function App() {
 
   const handleChangeSelect = (event, name) => {
     const value = event.value;
-
-    console.log("name: ", name);
-    console.log("value: ", value);
-
     setData({ ...data, [name]: value });
   };
 
@@ -23,9 +19,15 @@ function App() {
     setLoading(false);
     console.log(JSON.stringify(data));
 
-    getResult(data).then((data) => {
-      setResult(data);
-      setLoading(true);
+    setResult("esperando resultado...")
+
+    getResult(data).then((response) => {
+      if (response.code === "ERR_NETWORK") {
+        alert(response.message);
+      } else {
+        setResult("₡ "+response);
+        setLoading(true);
+      }
     });
   };
 
@@ -50,7 +52,6 @@ function App() {
                 <div className="select">
                   <label>Año</label>
                   <Select
-                    name="year"
                     styles={customStyle}
                     placeholder="Seleccione el año..."
                     options={year}
@@ -72,7 +73,6 @@ function App() {
                 <div className="select">
                   <label>Genero</label>
                   <Select
-                    name="gender"
                     styles={customStyle}
                     placeholder="Seleccione el genero..."
                     options={gender}

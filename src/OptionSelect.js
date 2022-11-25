@@ -44,6 +44,15 @@ export const year = [
   { value: 2022, label: "2022" },
 ];
 
+
+export const years = () => {
+  let list = []
+  for (let index = 2007; index <= 2022; index++) {
+    list += { value: index, label: index }
+  }
+  return list;
+}
+
 export const gender = [
   { value: 0, label: "Female" },
   { value: 1, label: "Male" },
